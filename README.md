@@ -23,13 +23,13 @@
 ###
 ### conda deactivate
 ###
-### If You use script after 12:00 or need data for next day, modificate skript.
+### If You use script after 14:00 or need data for next day, modificate skript.
 ### Uncomment after_tomorrow_str and change:
 ###
 ### delivery_date = after_tomorrow_str  
 ### delivery_date = tomorrow_str
 ###
-###  When SDAC 15-minute goes live, estimated for 11 June 2025, official Day-Ahead prices will be provided in 15-minute resolution. This update is mandated externally and is not within our control.
+#####  When SDAC 15-minute goes live, estimated for 11 June 2025, official Day-Ahead prices will be provided in 15-minute resolution. This update is mandated externally and is not within our control.
 ### The change only applies to delivery dates after go-live date. For example, if SDAC go-live date is on 11 June 2025, the prices will be updated in 15-minute resolution after the auction run on 11 June, for delivery on 12 June 2025 (starting with the 00:00-00:15 CET contract period). 
 ###
 ## 15. min. period this day data from Nordpoll. Start script until 14:00.
