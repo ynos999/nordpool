@@ -1,7 +1,7 @@
-### Nordpool LV Price today or tomorrow
+# Nordpool LV Price today or tomorrow
 ###
 ###
-### The script collects data from Nordpool for Latvia, current day and saves it to a csv file.
+## The script collects data from Nordpool for Latvia, current day and saves it to a csv file.
 ###
 ### Manual for Linux and MAC OSX:
 ###
