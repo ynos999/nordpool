@@ -23,17 +23,6 @@
 ### conda deactivate
 ###
 ### If You use script after 14:00 or need data for next day, modificate skript or use *_next_d.py.
-### Uncomment after_tomorrow_str and change:
-###
-### delivery_date = after_tomorrow_str  
-### delivery_date = tomorrow_str
-###
-#####  When SDAC 15-minute goes live, estimated for 11 June 2025, official Day-Ahead prices will be provided in 15-minute resolution. This update is mandated externally and is not within our control.
-##### The change only applies to delivery dates after go-live date. For example, if SDAC go-live date is on 11 June 2025, the prices will be updated in 15-minute resolution after the auction run on 11 June, for delivery on 12 June 2025 (starting with the 00:00-00:15 CET contract period). 
-###
-### 15. min. period this day data from Nordpoll. Start script until 14:00.
-###
-#### python nordpool_15m.py or python3 nordpool_15m.py
 ###
 ### 15. min. period from Nordpoll save to duckdb.
 ###
@@ -41,7 +30,7 @@
 ###
 ### Print duckdb database Nordpool data.
 ###
-#### python dbduck_print.py
+#### python dbduck_print_....py
 ###
 ### Next day from Nordpoll. Start script after 14:00.
 ### Create csv file.
@@ -50,3 +39,15 @@
 #### python nordpool_15m_db_next_d.py
 ### Print duckdb database next day Nordpool data.
 #### python dbduck_print_next_d.py
+
+# TASMOTA AND NORDPOOL LV
+### TEST WITH SONOFF BASIC R4 AND TASMOTA
+### 1. STEP ADD TO DATABASE DATA: python tasmota_db_write_next_day_15m.py
+## 
+## READ and TURN ON OR OFF TASMOTA SONOFF.
+### python tasmota_db_read.py
+### Change YOUR SONOFF IP, User AND Password.
+## Tasmota data:
+### TASMOTA_IP = "YOUR IP"
+### USER = "YOUR USER"
+### PASSWORD = "YOUR PASSWORD"

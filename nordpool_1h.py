@@ -4,7 +4,6 @@ import pandas as pd
 import time
 from datetime import datetime, timedelta
 
-
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
@@ -23,29 +22,26 @@ min_time = ""
 today = datetime.now()
 today_str = today.strftime("%d-%m-%Y")
 tomorrow_str = (today + timedelta(days=1)).strftime("%d-%m-%Y")
-# If you use script after 12:00 uncomment after_tomorrow_str
-# after_tomorrow_str = (today + timedelta(days=2)).strftime("%d-%m-%Y")
+# If you use the script after 14:00, uncomment after_tomorrow_str
+after_tomorrow_str = (today + timedelta(days=2)).strftime("%d-%m-%Y")
 
 for row in rows:
     cells = row.find_elements(By.TAG_NAME, 'td')
     if len(cells) >= 2:
         full_period = cells[0].text.strip()
-        period = full_period.split(" - ")[0]  # Get only the start time
-        # period = cells[0].text.strip()
+        period_start = full_period.split(" - ")[0]
         price = cells[1].text.strip().replace(",", ".")
 
-        # Assign correct date
-        if period.startswith("00:00"):
-            delivery_date = tomorrow_str   # after_tomorrow_str If you use script after 12:00
+        # Change '00:' times to '24:' and update the delivery date to the next day
+        if period_start.startswith("00:"):
+            # period_start = "24:" + period_start[3:]  # Change '00:' to '24:'
+            # Update to the next day
+            delivery_date = tomorrow_str  # Change after_tomorrow_str if use script after 14:00
         else:
-            delivery_date = today_str      # tomorrow_str If you use script after 12:00
+            delivery_date = today_str  # Change tomorrow_str if use script after 14:00
 
         price_value = float(price)
-        data.append([delivery_date, period, price_value])
-
-        if price_value < min_price:
-            min_price = price_value
-            min_time = period
+        data.append([delivery_date, period_start, price_value])
 
 # Print the lowest price and corresponding time
 print(f"Lowest Price: {min_price} EUR/MWh at Time: {min_time}")

@@ -1,0 +1,5 @@
+# Run tasmota_db_write_next_day_15m.py every day at 16:00
+0 16,17,18,19,20 * * * /usr/local/bin/python /app/tasmota_db_write_next_day_15m.py >> /var/log/cron.log 2>&1
+
+# Run tasmota_db_read.py every 2 minutes
+*/5 * * * * /usr/local/bin/python /app/tasmota_db_read.py >> /var/log/cron.log 2>&1

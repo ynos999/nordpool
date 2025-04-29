@@ -36,9 +36,9 @@ for row in rows:
 
         # Assign correct date
         if period.startswith("00:"):
-            delivery_date = after_tomorrow_str   # tomorrow_str If you use script after 12:00
+            delivery_date = after_tomorrow_str   # tomorrow_str If you use script after 14:00
         else:
-            delivery_date = tomorrow_str      # today_str If you use script after 12:00
+            delivery_date = tomorrow_str      # today_str If you use script after 14:00
 
         price_value = float(price)
         data.append([delivery_date, period, price_value])
