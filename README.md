@@ -41,13 +41,26 @@
 #### python dbduck_print_next_d.py
 
 # TASMOTA AND NORDPOOL LV
-### TEST WITH SONOFF BASIC R4 AND TASMOTA
-### 1. STEP ADD TO DATABASE DATA: python tasmota_db_write_next_day_15m.py
+## TEST WITH SONOFF BASIC R4 AND TASMOTA.
+### 1. STEP. ADD TO DATABASE DATA. RUN python tasmota_db_write_next_day_15m.py or nordpool_15m_db.py
 ## 
 ## READ and TURN ON OR OFF TASMOTA SONOFF.
-### python tasmota_db_read.py
-### Change YOUR SONOFF IP, User AND Password.
-## Tasmota data:
+### 2. STEP change YOUR SONOFF IP, User AND Password in file tasmota_db_read.py.
+### Tasmota data:
 ### TASMOTA_IP = "YOUR IP"
 ### USER = "YOUR USER"
 ### PASSWORD = "YOUR PASSWORD"
+### 3. STEP. RUN python tasmota_db_read.py
+### 4. Crontab add (change to your location):
+### 0 16,20,21 * * * /usr/local/bin/python3.13 /YOUR_LOCATION/nordpool/tasmota_db_write_next_day_15m.py
+### */5 * * * * /usr/local/bin/python3.13 /YOUR_LOCATION/tasmota_db_read.py
+##
+## DOCKER
+### Create .env file in Docker folder, befor use docker.
+### RUN:
+### docker build -t tasmota-cron-job .
+### docker build --no-cache -t tasmota-cron-job .
+### docker run -d --name tasmota-cron-job tasmota-cron-job
+### docker logs -f tasmota-cron-job
+### docker exec -it tasmota-cron-job date
+### DON'T work with arm64 processors.
