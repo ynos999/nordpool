@@ -9,3 +9,4 @@ prices.duckdb
 *.log
 .env
 /Docker/.env
+/ESP32
